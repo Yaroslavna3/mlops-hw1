@@ -9,7 +9,7 @@ def mean(values: list[float]) -> float:
 def median(values: list[float]) -> float:
     """Return the median of a non-empty list."""
     if not values:
-        raise ValueError("values must not be empty")
+        raise ValueError("median values must not be empty")
 
     sorted_values = sorted(values)
     midpoint = len(sorted_values) // 2

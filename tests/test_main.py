@@ -21,5 +21,5 @@ def test_median_even() -> None:
 
 
 def test_median_empty() -> None:
-    with pytest.raises(ValueError):
+    with pytest.raises(ValueError, match="median values must not be empty"):
         median([])
