@@ -1,0 +1,20 @@
+stages:
+  train:
+    cmd: uv run python -m ml_pipeline.training
+    deps:
+    - data/raw.csv
+    - ml_pipeline/data.py
+    - ml_pipeline/model.py
+    - ml_pipeline/training.py
+    outs:
+    - artifacts/model.pt
+  evaluate:
+    cmd: uv run python -m ml_pipeline.evaluation
+    deps:
+    - artifacts/model.pt
+    - data/raw.csv
+    - ml_pipeline/data.py
+    - ml_pipeline/evaluation.py
+    - ml_pipeline/model.py
+    metrics:
+    - reports/metrics.json

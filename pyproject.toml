@@ -4,10 +4,14 @@ version = "0.2.1"
 description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
-dependencies = []
+dependencies = [
+    "numpy<2",
+    "torch>=2.15.0",
+]
 
 [dependency-groups]
 dev = [
+    "dvc>=3.67.1",
     "pytest>=9.1.1",
     "ruff>=0.17.0",
     "ty>=0.0.88",
@@ -16,3 +20,9 @@ dev = [
 [tool.pytest.ini_options]
 pythonpath = ["."]
 testpaths = ["tests"]
+addopts = "--basetemp=.pytest_tmp"
+markers = [
+    "unit: isolated tests for individual components",
+    "integration: tests for interactions between components",
+    "e2e: end-to-end tests for the complete pipeline",
+]
