@@ -1,0 +1,54 @@
+schema: '2.0'
+stages:
+  train:
+    cmd: uv run python -m ml_pipeline.training
+    deps:
+    - path: data/raw.csv
+      hash: md5
+      md5: 58d7510359e69454e2797f34a4b7cb10
+      size: 58
+    - path: ml_pipeline/data.py
+      hash: md5
+      md5: 798857d943ec7b64a11606e4b6e3cd03
+      size: 1438
+    - path: ml_pipeline/model.py
+      hash: md5
+      md5: f7ae7a652c4f703db2c60d200b5096e5
+      size: 1118
+    - path: ml_pipeline/training.py
+      hash: md5
+      md5: dd992e9df5bda2503fb4b180f92895cb
+      size: 1748
+    outs:
+    - path: artifacts/model.pt
+      hash: md5
+      md5: 5ffa51495474f931e2cf15350e8c2bcf
+      size: 2505
+  evaluate:
+    cmd: uv run python -m ml_pipeline.evaluation
+    deps:
+    - path: artifacts/model.pt
+      hash: md5
+      md5: 5ffa51495474f931e2cf15350e8c2bcf
+      size: 2505
+    - path: data/raw.csv
+      hash: md5
+      md5: 58d7510359e69454e2797f34a4b7cb10
+      size: 58
+    - path: ml_pipeline/data.py
+      hash: md5
+      md5: 798857d943ec7b64a11606e4b6e3cd03
+      size: 1438
+    - path: ml_pipeline/evaluation.py
+      hash: md5
+      md5: 9a1728db9a569f7d1cce3f7517a44dd3
+      size: 1688
+    - path: ml_pipeline/model.py
+      hash: md5
+      md5: f7ae7a652c4f703db2c60d200b5096e5
+      size: 1118
+    outs:
+    - path: reports/metrics.json
+      hash: md5
+      md5: 7388e202c599187f72907b34939d9d86
+      size: 38
