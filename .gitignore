@@ -8,3 +8,4 @@ dist/
 *.egg-info/
 .idea/
 .vscode/
+.pytest_tmp/

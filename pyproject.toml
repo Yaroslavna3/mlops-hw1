@@ -20,3 +20,9 @@ dev = [
 [tool.pytest.ini_options]
 pythonpath = ["."]
 testpaths = ["tests"]
+addopts = "--basetemp=.pytest_tmp"
+markers = [
+    "unit: isolated tests for individual components",
+    "integration: tests for interactions between components",
+    "e2e: end-to-end tests for the complete pipeline",
+]
